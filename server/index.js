@@ -24,5 +24,5 @@ app.use(express.static('../client/build/static'));
 app.use(express.static('../client/build'));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../client/build', 'index.html')));
 
-app.listen(port, () => console.log(`Server is listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Server is listening at port: ${port}`));
 
