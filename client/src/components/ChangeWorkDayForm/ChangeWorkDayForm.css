@@ -1,0 +1,11 @@
+.change-work-day-form__content-container {
+	min-height: 50vh;
+	min-width: 25vw;
+
+	overflow: hidden;
+}
+
+.change-work-day-form__list {
+	height: 35vh;
+	overflow: auto;
+}

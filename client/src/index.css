@@ -1,0 +1,36 @@
+@import './normalize.css';
+
+/*:root {
+  --default-font-color: #f5f5f5;
+  --btn-color: #f5f5f5;
+  --btn-hover-color: #c2c2c2;
+  --primary-btn-color: #5e92f3;
+  --primary-btn-hover-color: #003c8f;
+  --warn-btn-color: #c62828;
+  --warn-btn-hover-color: #8e0000;
+}
+
+[data-theme="dark"] {
+  --font-color: #f5f5f5;
+  --main-bg-color: #c2c2c2;
+  --menu-item-color: #424242;
+  --menu-item-hover-color: #1b1b1b;
+}
+
+[data-theme="light"] {
+  --font-color: #212121;
+  --main-bg-color: #f5f5f5;
+  --menu-item-color: #f5f5f5;
+  --menu-item-hover-color: #c2c2c2;
+}
+*/
+
+html {
+	font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  height: 100vh;
+  width: 100vw;
+  min-width: 320px;
+  min-height: 560px;
+  overflow: hidden;
+}

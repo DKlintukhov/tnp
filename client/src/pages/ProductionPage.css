@@ -1,0 +1,47 @@
+.production-page__container {
+  height: 100vh;
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.production-page__spinner-container {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.production-page__nav-container {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.production-page__link {
+  text-decoration: none;
+}
+
+.production-page__item-text {
+  text-align: center;
+}
+
+.production-page__table-container {
+  flex-grow: 1;
+  max-height: 93vh;
+  overflow: hidden;
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .production-page__nav-container {
+    height: 12vh;
+  }
+
+  .production-page__table-container {
+    max-height: 88vh;
+  }
+}

@@ -1,0 +1,8 @@
+.new-month-form__content-container {
+    min-height: 25vh;
+    min-width: 25vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
