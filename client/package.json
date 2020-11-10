@@ -1,6 +1,7 @@
 {
   "name": "tnp_plan_client",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -9,8 +10,8 @@
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^24.9.1",
     "@types/material-ui": "^0.21.8",
-    "@types/node": "^12.19.3",
-    "@types/react": "^16.9.55",
+    "@types/node": "^12.19.4",
+    "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
     "react": "^17.0.1",
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

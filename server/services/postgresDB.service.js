@@ -180,16 +180,20 @@ class ProstgresDB {
 
 
 	async _createDB_() {
-		this.client = new Pool({
-			connectionString: process.env.DATABASE_URL,
-			ssl: {
-				rejectUnauthorized: false
-			}
-		});
+		try {
+			this.client = new Pool({
+				connectionString: process.env.DATABASE_URL,
+				ssl: {
+					rejectUnauthorized: false
+				}
+			});
 
-		await this.client.connect();
-		this.client.on('connect', () => console.log('PostgreDB is connected'));
-		//await this._initData_();
+			await this.client.connect();
+			this.client.on('connect', () => console.log('PostgreDB is connected'));
+			//await this._initData_();
+		} catch(e) {
+			console.log(e.message);
+		}
 	}
 
 	async _initData_() {
