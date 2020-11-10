@@ -1,5 +1,5 @@
 {
-  "name": "tnp-server",
+  "name": "tnp_plan_server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,6 +19,6 @@
     "start": "nodemon node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Denis Klintukhov",
   "license": "ISC"
 }

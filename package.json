@@ -1,0 +1,20 @@
+{
+  "name": "tnp_plan",
+  "version": "1.0.0",
+  "description": "tnp production",
+  "main": "index.js",
+  "engines": {
+    "node": "12.18.2",
+    "npm": "6.14.5"
+  },
+  "scripts": {
+    "test": "npm test",
+    "client-dev": "npm start --prefix ./client/",
+    "server-dev": "npm start --prefix ./server/",
+    "dev": "npm run server-dev & npm run client-dev",
+    "prod": "npm run build -p --prefix ./client/ & npm run server-dev",
+    "install": "npm install --prefix ./server/ & npm install --prefix ./client/"
+  },
+  "author": "Denis Klintukhov",
+  "license": "ISC"
+}

@@ -181,7 +181,7 @@ class ProstgresDB {
 
 	async _createDB_() {
 		this.client = new Pool({
-			connectionString: process.env.DATABASE_URL || 'postgres://jovurplamjvums:ec6716afc9791561c636d1a52655bacef3258f7fffc35eb90e3a5857e7a461aa@ec2-3-248-4-172.eu-west-1.compute.amazonaws.com:5432/dbn4cfrb17rei7',
+			connectionString: process.env.DATABASE_URL,
 			ssl: {
 				rejectUnauthorized: false
 			}
@@ -205,96 +205,3 @@ class ProstgresDB {
 }
 
 module.exports.getDataBase = () => new ProstgresDB();
-
-// client.query('BEGIN', err => {
-//   if (shouldAbort(err)) return;
-//   const query = `INSERT INTO Months VALUES('napkins', 20, 50000, 0);`
-
-//   client.query(query, (err, res) => {
-//     if (shouldAbort(err)) return;
-
-//     client.query('COMMIT', err => {
-//       if (err) {
-//         console.error('Error committing transaction', err.stack);
-//       }
-//     })
-//   })
-// })
-
-// client.query('BEGIN', err => {
-//   if (shouldAbort(err)) return;
-//   const query = `INSERT INTO Months VALUES('toilets', 20, 510000, 0);`
-
-//   client.query(query, (err, res) => {
-//     if (shouldAbort(err)) return;
-
-//     client.query('COMMIT', err => {
-//       if (err) {
-//         console.error('Error committing transaction', err.stack);
-//       }
-//     })
-//   })
-// })
-
-
-// client.query('BEGIN', err => {
-//   if (shouldAbort(err)) return;
-//   const query = `INSERT INTO WorkDays VALUES('napkins', 1, 2400);`
-
-//   client.query(query, (err, res) => {
-//     if (shouldAbort(err)) return;
-
-//     client.query('COMMIT', err => {
-//       if (err) {
-//         console.error('Error committing transaction', err.stack);
-//       }
-//     })
-//   })
-// })
-
-// client.query('BEGIN', err => {
-//   if (shouldAbort(err)) return;
-//   const query = `INSERT INTO WorkDays VALUES('toilets', 1, 24000);`
-
-//   client.query(query, (err, res) => {
-//     if (shouldAbort(err)) return;
-
-//     client.query('COMMIT', err => {
-//       if (err) {
-//         console.error('Error committing transaction', err.stack);
-//       }
-//     })
-//   })
-// })
-
-// client.query('BEGIN', err => {
-//   if (shouldAbort(err)) return;
-//   const query = `INSERT INTO WorkDays VALUES('toilets', 2, 24500);`
-
-//   client.query(query, (err, res) => {
-//     if (shouldAbort(err)) return;
-
-//     client.query('COMMIT', err => {
-//       if (err) {
-//         console.error('Error committing transaction', err.stack);
-//       }
-//     })
-//   })
-// })
-
-// client.query('BEGIN', err => {
-//   if (shouldAbort(err)) return;
-//   const query = `INSERT INTO WorkDays VALUES('napkins', 2, 2520);`
-
-//   client.query(query, (err, res) => {
-//     if (shouldAbort(err)) return;
-
-//     client.query('COMMIT', err => {
-//       if (err) {
-//         console.error('Error committing transaction', err.stack);
-//       }
-//     })
-//   })
-// })
-
-

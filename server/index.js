@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
-const port = 4000;
+const port = process.env.PORT || 4444;
 const data = require('./models/data');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -19,6 +19,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api', workMonthRouter);
+
+app.use(express.static('client/dist/TNP'))
+app.get('*', function (req, res) {
+	res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 app.listen(port, () => console.log(`Server is listening at http://localhost:${port}`));
 
