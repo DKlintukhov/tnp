@@ -77,7 +77,7 @@ export const ProductionTable = (props: Props) => {
 	
 	const getNeedsTodo = () => {
 		const remainTodo = getRemainTodo();
-		return Math.round(remainTodo / (month.days - month.workDays.length));
+		return Math.round(remainTodo / ((month.days - month.workDays.length) || 1));
 	}
 
 	return (
