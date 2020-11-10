@@ -9,12 +9,13 @@
   },
   "scripts": {
     "test": "npm test",
+    "start": "node index",
     "client-dev": "npm start --prefix ./client/",
     "server-dev": "npm start --prefix ./server/",
     "dev": "npm run server-dev & npm run client-dev",
-    "prod": "npm run build -p --prefix ./client/ & npm run server-dev",
-    "install": "npm install --prefix ./server/ & npm install --prefix ./client/",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install & npm run prod"
+    "install": "npm run install --prefix ./client/ & npm run install --prefix ./server/",
+    "install-prod": "npm install --prefix ./server/ & npm run build -p --prefix ./client/",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install-prod"
   },
   "author": "Denis Klintukhov",
   "license": "ISC"
