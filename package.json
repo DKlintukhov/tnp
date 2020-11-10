@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "npm test",
-    "start": "node index",
+    "start": "npm start --prefix ./server/",
     "client-dev": "npm start --prefix ./client/",
     "server-dev": "npm start --prefix ./server/",
     "dev": "npm run server-dev & npm run client-dev",
