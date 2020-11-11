@@ -258,7 +258,7 @@ export const ProductionPage = () => {
             </Button>
           </Link>
           <Button variant="outlined" color="primary" onClick={onMenuToggle}>
-            Управление
+            Журнал
           </Button>
         </nav>
         

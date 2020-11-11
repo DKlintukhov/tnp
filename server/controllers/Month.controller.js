@@ -27,18 +27,14 @@ module.exports.getMonth = async (req, res) => {
 		const product = req.params.product;
 		const result = await db.getAllDataByProduct(product);
 
-		if (result.rows[0]) {
-			const {plan, days, ppr} = result.rows[0];
-			const m = new Month(product, plan, days, ppr);
+		const {plan, days, ppr} = result.rows[0];
+		const m = new Month(product, plan, days, ppr);
 
-			result.rows.forEach((day, i) => {
-				m.workDays.push({day: i, amount: day.amount});
-			})
+		result.rows.forEach((day, i) => {
+			m.workDays.push({day: i, amount: day.amount});
+		})
 
-			res.status(200).json(m);
-		} else {
-			res.status(200).json({});
-		}
+		res.status(200).json(m);
 
 	} catch(e) {
 		console.log(e.message);
