@@ -17,7 +17,7 @@ module.exports.addNewMonth = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(404).json({
-			error: new Error(`The month didn't added`),
+			error: new Error(e.message),
 		})
 	}	
 }
@@ -43,7 +43,7 @@ module.exports.getMonth = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(404).json({
-			error: new Error(`The month doesn't exist`),
+			error: new Error(e.message),
 		})
 	}
 }
@@ -61,7 +61,7 @@ module.exports.updateDay = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(304).json({
-			error: new Error(`Can't update the day`),
+			error: new Error(e.message),
 		})
 	}
 }
@@ -79,7 +79,7 @@ module.exports.updatePpr = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(304).json({
-			error: new Error(`Can't update the ppr`),
+			error: new Error(e.message),
 		})
 	}	
 }
@@ -95,7 +95,7 @@ module.exports.updateDays = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(304).json({
-			error: new Error(`Can't update the days`),
+			error: new Error(e.message),
 		})
 	}	
 }
@@ -112,7 +112,7 @@ module.exports.updatePlan = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(304).json({
-			error: new Error(`Can't update work plan`),
+			error: new Error(e.message),
 		})
 	}	
 }
@@ -129,7 +129,7 @@ module.exports.addWorkDay = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(304).json({
-			error: new Error(`Can't add work work day`),
+			error: new Error(e.message),
 		})
 	}	
 }
@@ -146,7 +146,7 @@ module.exports.deleteWorkDay = async (req, res) => {
 	} catch(e) {
 		console.log(e.message);
 		res.status(304).json({
-			error: new Error(`Can't delete work day`),
+			error: new Error(e.message),
 		})
 	}	
 }
