@@ -182,7 +182,7 @@ class ProstgresDB {
 	async _createDB_() {
 		try {
 			this.client = new Pool({
-				connectionString: process.env.DATABASE_URL || 'postgres://jovurplamjvums:ec6716afc9791561c636d1a52655bacef3258f7fffc35eb90e3a5857e7a461aa@ec2-3-248-4-172.eu-west-1.compute.amazonaws.com:5432/dbn4cfrb17rei7',
+				connectionString: process.env.DATABASE_URL,
 				ssl: {
 					rejectUnauthorized: false
 				}

@@ -2,7 +2,7 @@ import { WorkMonth, Products } from '../models';
 
 export class DBService {
 	private readonly url = '/api';
-	//private readonly url = 'http://localhost:4444';
+	// private readonly url = 'http://localhost:4444/api';
 
 	public async addNewMonth(product: Products, plan: number, days: number, ppr: number) {
 		const res = await fetch(`${this.url}/month/${product}`, {

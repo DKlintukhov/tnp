@@ -40,6 +40,7 @@ export const SimpleForm = (props: Props) => {
 	        <DialogContent className="simple-form__content-container">
 
 	          <TextField
+	          	autoFocus
 	            margin="dense"
 	            label={label}
 	            type="number"

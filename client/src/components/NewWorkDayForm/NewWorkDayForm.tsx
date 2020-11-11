@@ -36,6 +36,7 @@ export const NewWorkDayForm = (props: Props) => {
 	        <DialogContent className="new-work-day-form__content-container">
 
 	          <TextField
+	          	autoFocus
 	            margin="dense"
 	            label="Количество"
 	            type="number"

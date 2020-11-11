@@ -44,21 +44,25 @@ export const ChangeWorkDayForm = (props: Props) => {
 		setSelectedDay(day);
 	}
 
+
 	return (
 		<>
 			<DialogTitle>Изменить смену</DialogTitle>
 	        <DialogContent className="change-work-day-form__content-container">
 		        <List className="change-work-day-form__list">
-	              {workDays.map((workDay) => {
-	              	return (
-	              		<ListItem button key={workDay.day} selected={selectedDay === workDay.day} onClick={() => onDaySelected(workDay.day)}> 
-	              			<ListItemText primary={workDay.day + 1} /> <ListItemText primary={workDay.amount} />
-	              		</ListItem>
-	              	)
-	              })}
+	              {workDays.length > 0 
+	              	? 	workDays.map((workDay) => {
+			              	return (
+			              		<ListItem button key={workDay.day} selected={selectedDay === workDay.day} onClick={() => onDaySelected(workDay.day)}> 
+			              			<ListItemText primary={workDay.day + 1} /> <ListItemText primary={workDay.amount} />
+			              		</ListItem>
+			              	)
+	              		})
+	              	: <ListItemText inset primary="Нет смен" />}
 	            </List>
 
 	          <TextField
+	          	autoFocus
 	            margin="dense"
 	            label="Количество"
 	            type="number"

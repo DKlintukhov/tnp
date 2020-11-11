@@ -16,7 +16,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Divider,
   Dialog
 } from '@material-ui/core/';
 
@@ -274,38 +273,28 @@ export const ProductionPage = () => {
           onOpen={onMenuToggle}
           >
           <List aria-label="menu">
-            <ListItem button onClick={onNewMonthClick}>
-              <ListItemText className="production-page__item-text" inset primary="Новый месяц" />
+            <ListItem button onClick={onNewMonthClick} divider={true}>
+              <ListItemText className="production-page__item-text" primary="Новый месяц" />
             </ListItem>
 
-            <Divider />
-
-            <ListItem button onClick={onNewWorkDayClick}>
-              <ListItemText className="production-page__item-text" inset primary="Новая смена" />
+            <ListItem button onClick={onNewWorkDayClick} divider={true}>
+              <ListItemText className="production-page__item-text" primary="Новая смена" />
             </ListItem>
 
-            <Divider />
-
-            <ListItem button onClick={onChangeWorkkDayClick}>
-              <ListItemText className="production-page__item-text" inset primary="Изменить смену" />
+            <ListItem button onClick={onChangeWorkkDayClick} divider={true}>
+              <ListItemText className="production-page__item-text" primary="Изменить смену" />
             </ListItem>
 
-            <Divider />
-
-            <ListItem button onClick={onChangePlanClick}>
-              <ListItemText className="production-page__item-text" inset primary="Изменить план" />
+            <ListItem button onClick={onChangePlanClick} divider={true}>
+              <ListItemText className="production-page__item-text" primary="Изменить план" />
             </ListItem>
 
-            <Divider />
-
-            <ListItem button onClick={onChangeDaysClick}>
-              <ListItemText className="production-page__item-text" inset primary="Изменить количество смен" />
+            <ListItem button onClick={onChangeDaysClick} divider={true}>
+              <ListItemText className="production-page__item-text" primary="Изменить количество смен" />
             </ListItem>
-
-            <Divider />
 
             <ListItem button onClick={onChangePprClick}>
-              <ListItemText className="production-page__item-text" inset primary="Изменить часы ППР" />
+              <ListItemText className="production-page__item-text" primary="Изменить часы ППР" />
             </ListItem>
           </List>
         </SwipeableDrawer>
@@ -314,13 +303,10 @@ export const ProductionPage = () => {
           <NewMonthForm confirmed={onNewMonthConfirmed} canceled={onNewMonthCanceled} product={product} />
         </Dialog>
 
-        <Divider />
-
         <Dialog open={newWorkDayMenuOpened} onClose={closeNewWorkDayMenu}>
           <NewWorkDayForm confirmed={onNewWorkDayConfirmed} canceled={onNewWorkDayCanceled}  />
         </Dialog>
 
-        
         <Dialog open={changePlanMenuOpened} onClose={closeChangePlanForm}>
           <SimpleForm 
           confirmed={onChangePlanConfirmed} 
@@ -363,5 +349,5 @@ export const ProductionPage = () => {
       </section>
 
     </ErrorBoundary>
-    );
+  );
 }

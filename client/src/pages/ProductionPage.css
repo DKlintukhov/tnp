@@ -26,14 +26,14 @@
   text-decoration: none;
 }
 
-.production-page__item-text {
-  text-align: center;
-}
-
 .production-page__table-container {
   flex-grow: 1;
   max-height: 93vh;
   overflow: hidden;
+}
+
+.production-page__item-text {
+  text-align: center;
 }
 
 @media (orientation: landscape) and (max-height: 600px) {
