@@ -1,8 +1,8 @@
 import { WorkMonth, Products } from '../models';
+import { dataBase, mockMonthData } from './repo';
 
 export class DBService {
-	private readonly url = '/api';
-	// private readonly url = 'http://localhost:4444/api';
+	private readonly url = dataBase.url;
 
 	public async addNewMonth(product: Products, plan: number, days: number, ppr: number) {
 		const res = await fetch(`${this.url}/month/${product}`, {
@@ -20,7 +20,10 @@ export class DBService {
 	}
 
 	public async getMonth(p: Products): Promise<WorkMonth> {
-		console.log('URL:', `${this.url}/month/${p}`)
+		if (process.env.NODE_ENV !== 'production') {
+			return await JSON.parse(mockMonthData);
+		}
+
 		const res = await fetch(`${this.url}/month/${p}`);
 
 		if (!res.ok) {

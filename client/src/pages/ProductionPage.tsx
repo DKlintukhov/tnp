@@ -23,7 +23,6 @@ import { DBServiceContext } from '../App';
 import { WorkMonth, WorkDay } from '../models';
 import './ProductionPage.css';
 
-
 export const ProductionPage = () => {
   const {product} = useParams();
   const dbService = useContext(DBServiceContext);

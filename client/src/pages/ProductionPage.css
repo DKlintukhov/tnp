@@ -1,6 +1,6 @@
 .production-page__container {
   height: 100vh;
-  max-width: 960px;
+  max-width: 1024px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 .production-page__nav-container {
-  height: 7vh;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -27,21 +27,11 @@
 }
 
 .production-page__table-container {
+  display: flex;
   flex-grow: 1;
-  max-height: 93vh;
   overflow: hidden;
 }
 
 .production-page__item-text {
   text-align: center;
-}
-
-@media (orientation: landscape) and (max-height: 600px) {
-  .production-page__nav-container {
-    height: 12vh;
-  }
-
-  .production-page__table-container {
-    max-height: 88vh;
-  }
 }

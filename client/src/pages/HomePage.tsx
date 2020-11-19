@@ -11,17 +11,19 @@ import './HomePage.css';
 export const HomePage = () => {
 	return (
     <ErrorBoundary>
-        <nav className="home-page__navigation">        
-          <li className="navigation__item">
-            <Link to="/production/napkins">
-              <img className="item__img" src={napkinsImg} alt="Салфетки" />
-            </Link>
-          </li>
-          <li className="navigation__item">
-            <Link to="/production/toilets">
-              <img className="item__img" src={toiletsImg} alt="Туалетная бумага" />
-            </Link>
-          </li>
+        <nav className="home-page__navigation">  
+          <ul className="home-page__navigation-list">    
+            <li className="navigation__item">
+              <Link to="/production/napkins">
+                <img className="item__img" src={napkinsImg} alt="Салфетки" />
+              </Link>
+            </li>
+            <li className="navigation__item">
+              <Link to="/production/toilets">
+                <img className="item__img" src={toiletsImg} alt="Туалетная бумага" />
+              </Link>
+            </li>
+          </ul>
         </nav>
     </ErrorBoundary>
 	);

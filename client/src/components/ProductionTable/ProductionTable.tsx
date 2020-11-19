@@ -81,8 +81,8 @@ export const ProductionTable = (props: Props) => {
 	}
 
 	return (
-		<>
-			<TableContainer component={Paper} className="production-table__table-container">
+		<section className="production-table__table-container">
+			<TableContainer component={Paper} className="production-table__main-table">
 		      <Table stickyHeader>
 
 		        <TableHead>
@@ -154,9 +154,9 @@ export const ProductionTable = (props: Props) => {
 		      </Table>
 		    </TableContainer>
 
-		    <TableContainer component={Paper} className="production-table__table-container">
+		    <TableContainer component={Paper} className="production-table__footer">
 		    	<Table stickyHeader>
-			        <TableFooter className="production-table__footer">
+			        <TableFooter>
 			          <TableRow>
 			            <TableCell className="production-table__cell production-table__footer-cell" variant="head" align="center">
 			            	<span className="production-table__head-cell">Нужно делать по</span>:
@@ -168,6 +168,6 @@ export const ProductionTable = (props: Props) => {
 			        </TableFooter>
 			    </Table>
 	        </TableContainer>
-	    </>
+	    </section>
 	)
 }

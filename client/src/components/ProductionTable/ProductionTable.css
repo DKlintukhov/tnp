@@ -1,5 +1,12 @@
 .production-table__table-container {
-	max-height: 95%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.production-table__main-table {
+	flex-shrink: 1;
 }
 
 .production-table__cell {
@@ -11,33 +18,12 @@
 }
 
 .production-table__footer {
+	height: 55px;
+	flex-shrink: 0;
 
+	overflow: hidden;
 }
 
 .production-table__footer-cell {
 	line-height: 1;
-}
-
-@media (max-height: 400px) {
-  .production-table__table-container {
-  	max-height: 85%;
-  }
-}
-
-@media (min-height: 401px) and (max-height: 601px) {
-  .production-table__table-container {
-  	max-height: 89%;
-  }
-}
-
-@media (min-height: 601px) {
-  .production-table__table-container {
-  	max-height: 91%;
-  }
-}
-
-@media (min-height: 801px) {
-  .production-table__table-container {
-  	max-height: 94%;
-  }
 }

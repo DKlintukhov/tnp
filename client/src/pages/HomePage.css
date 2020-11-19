@@ -1,11 +1,18 @@
 .home-page__navigation {
   height: 100vh;
+}
+
+.home-page__navigation-list {
+  height: 100%;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 
-  list-style-type: none;
+  padding: 0px;
+
+  list-style-type: none;  
 }
 
 .navigation__item {
