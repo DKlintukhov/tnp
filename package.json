@@ -15,7 +15,7 @@
     "dev": "npm run server-dev & npm run client-dev",
     "install": "npm install --prefix ./server/ & npm install --prefix ./client/",
     "install-prod": "npm run install & npm run build -p --prefix ./client/",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run install-prod"
+    "heroku-postbuild": "npm run install-prod"
   },
   "author": "Denis Klintukhov",
   "license": "ISC"
