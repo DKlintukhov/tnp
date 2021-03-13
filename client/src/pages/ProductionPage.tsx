@@ -1,30 +1,30 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
 
-import { 
-  ErrorBoundary, 
-  NewMonthForm, 
+import {
+  ErrorBoundary,
+  NewMonthForm,
   NewWorkDayForm,
   SimpleForm,
   ChangeWorkDayForm,
-  ProductionTable
-} from '../components';
-import { 
-  Button, 
-  CircularProgress, 
+  ProductionTable,
+} from "../components";
+import {
+  Button,
+  CircularProgress,
   SwipeableDrawer,
   List,
   ListItem,
   ListItemText,
-  Dialog
-} from '@material-ui/core/';
+  Dialog,
+} from "@material-ui/core/";
 
-import { DBServiceContext } from '../App';
-import { WorkMonth, WorkDay } from '../models';
-import './ProductionPage.css';
+import { DBServiceContext } from "../App";
+import { WorkMonth, WorkDay } from "../models";
+import "./ProductionPage.css";
 
 export const ProductionPage = () => {
-  const {product} = useParams();
+  const { product } = useParams();
   const dbService = useContext(DBServiceContext);
 
   const [month, setMonth] = useState({
@@ -32,7 +32,7 @@ export const ProductionPage = () => {
     days: 0,
     plan: 0,
     ppr: 0,
-    workDays: []
+    workDays: [],
   } as WorkMonth);
   const [isLoading, setIsLoading] = useState(true);
   const [menuIsOpened, setMenuIsOpened] = useState(false);
@@ -48,8 +48,8 @@ export const ProductionPage = () => {
       try {
         const m = await dbService.getMonth(product);
         setMonth(m);
-      } catch(e) {
-        console.log(e.message)
+      } catch (e) {
+        console.log(e.message);
       } finally {
         setIsLoading(false);
       }
@@ -58,295 +58,316 @@ export const ProductionPage = () => {
 
   const onMenuToggle = () => {
     setMenuIsOpened(!isLoading);
-  }
+  };
 
   const onCloseMenu = () => {
     setMenuIsOpened(false);
-  }
-
+  };
 
   const onNewMonthClick = () => {
     setNewMonthMenuOpened(true);
     setMenuIsOpened(false);
-  }
+  };
   const onNewMonthConfirmed = (m: WorkMonth) => {
     (async () => {
       try {
         setIsLoading(true);
         await dbService.addNewMonth(product, m.plan, m.days, m.ppr);
         setMonth(m);
-      } catch(e) {
+      } catch (e) {
         console.log(e.message);
       } finally {
         setIsLoading(false);
         closeNewMonthMenu();
       }
     })();
-  }
+  };
   const onNewMonthCanceled = () => {
     closeNewMonthMenu();
-  }
+  };
   const closeNewMonthMenu = () => {
     setNewMonthMenuOpened(false);
-  }
-
+  };
 
   const onNewWorkDayClick = () => {
     setNewWorkDayMenuOpened(true);
     setMenuIsOpened(false);
-  }
+  };
   const closeNewWorkDayMenu = () => {
     setNewWorkDayMenuOpened(false);
-  }
+  };
   const onNewWorkDayCanceled = () => {
     setNewWorkDayMenuOpened(false);
-  }
+  };
   const onNewWorkDayConfirmed = (amount: number) => {
     (async () => {
       try {
         setIsLoading(true);
-        const newMonth = {...month};
+        const newMonth = { ...month };
         const day = newMonth.workDays.length;
 
         if (day > month.days) {
-          throw new Error('Превышено установленное количество смен!')
+          throw new Error("Превышено установленное количество смен!");
         }
 
-        newMonth.workDays.push({day, amount});
+        newMonth.workDays.push({ day, amount });
         await dbService.addWorkDay(product, day, amount);
         setMonth(newMonth);
-      } catch(e) {
+      } catch (e) {
         console.log(e.message);
       } finally {
         setIsLoading(false);
         setNewWorkDayMenuOpened(false);
       }
     })();
-  }
-
+  };
 
   const onChangePlanClick = () => {
     setChangePlanMenuOpened(true);
     setMenuIsOpened(false);
-  }
+  };
   const closeChangePlanForm = () => {
     setChangePlanMenuOpened(false);
-  }
+  };
   const onChangePlanConfirmed = (plan: number) => {
     (async () => {
       try {
         setIsLoading(true);
-        const newMonth = {...month};
+        const newMonth = { ...month };
         newMonth.plan = plan;
         await dbService.updatePlan(product, plan);
         setMonth(newMonth);
-      } catch(e) {
+      } catch (e) {
         console.log(e.message);
       } finally {
         setIsLoading(false);
         setChangePlanMenuOpened(false);
       }
     })();
-  }
+  };
   const onChangePlanCanceled = () => {
     setChangePlanMenuOpened(false);
-  }
-
+  };
 
   const onChangePprClick = () => {
     setMenuIsOpened(false);
     setShangePprMenuOpened(true);
-  }
+  };
   const closeChangePprForm = () => {
     setShangePprMenuOpened(false);
-  }
+  };
   const onChangePprCanceled = () => {
     setShangePprMenuOpened(false);
-  }
+  };
   const onChangePprConfirmed = (ppr: number) => {
     (async () => {
       try {
         setIsLoading(true);
-        const newMonth = {...month};
+        const newMonth = { ...month };
         newMonth.ppr = ppr;
         await dbService.updatePpr(product, ppr);
         setMonth(newMonth);
-      } catch(e) {
+      } catch (e) {
         console.log(e.message);
       } finally {
         setIsLoading(false);
         setShangePprMenuOpened(false);
       }
     })();
-  }
-
+  };
 
   const onChangeWorkkDayClick = () => {
     setMenuIsOpened(false);
     setShangeWorkDayMenuOpened(true);
-  }
+  };
   const closeChangeWorkDayMenu = () => {
     setShangeWorkDayMenuOpened(false);
-  }
+  };
   const onChangeWorkDayCanceled = () => {
     setShangeWorkDayMenuOpened(false);
-  }
+  };
   const onChangeWorkDayConfirmed = (workDay: WorkDay) => {
     (async () => {
       try {
         setIsLoading(true);
-        const newMonth = {...month};
+        const newMonth = { ...month };
         newMonth.workDays[workDay.day] = workDay;
-        console.log(workDay)
+        console.log(workDay);
         await dbService.updateDay(product, workDay.day, workDay.amount);
         setMonth(newMonth);
-      } catch(e) {
+      } catch (e) {
         console.log(e.message);
       } finally {
         setIsLoading(false);
         setShangeWorkDayMenuOpened(false);
       }
     })();
-  }
+  };
 
   const onChangeDaysClick = () => {
     setMenuIsOpened(false);
     setChangeDaysMenuOpened(true);
-  }
+  };
   const closeChangeDaysMenuOpened = () => {
     setChangeDaysMenuOpened(false);
-  }
+  };
   const onChangeDaysCanceled = () => {
     setChangeDaysMenuOpened(false);
-  }
+  };
   const onChangeDaysConfirmed = (days: number) => {
     (async () => {
       try {
         setIsLoading(true);
-        const newMonth = {...month};
+        const newMonth = { ...month };
         newMonth.days = days;
         newMonth.workDays.length = days;
         await dbService.updateDays(product, days);
         setMonth(newMonth);
-      } catch(e) {
+      } catch (e) {
         console.log(e.message);
       } finally {
         setIsLoading(false);
         setChangeDaysMenuOpened(false);
       }
     })();
-  }
+  };
 
   if (isLoading) {
     return (
       <div className="production-page__spinner-container">
         <CircularProgress size={"12rem"} />
-      </div> 
-    )
+      </div>
+    );
   }
 
   return (
     <ErrorBoundary>
-
       <section className="production-page__container">
-         <nav className="production-page__nav-container">
+        <nav className="production-page__nav-container">
           <Link className="production-page__link" to="/">
             <Button variant="outlined" color="secondary">
-              Назад 
+              Назад
             </Button>
           </Link>
           <Button variant="outlined" color="primary" onClick={onMenuToggle}>
             Журнал
           </Button>
         </nav>
-        
+
         <section className="production-page__table-container">
           <ProductionTable month={month} />
         </section>
-        
 
         <SwipeableDrawer
-          anchor={'bottom'}
+          anchor={"bottom"}
           open={menuIsOpened}
           onClose={onCloseMenu}
           onOpen={onMenuToggle}
-          >
+        >
           <List aria-label="menu">
             <ListItem button onClick={onNewMonthClick} divider={true}>
-              <ListItemText className="production-page__item-text" primary="Новый месяц" />
+              <ListItemText
+                className="production-page__item-text"
+                primary="Новый месяц"
+              />
             </ListItem>
 
             <ListItem button onClick={onNewWorkDayClick} divider={true}>
-              <ListItemText className="production-page__item-text" primary="Новая смена" />
+              <ListItemText
+                className="production-page__item-text"
+                primary="Новая смена"
+              />
             </ListItem>
 
             <ListItem button onClick={onChangeWorkkDayClick} divider={true}>
-              <ListItemText className="production-page__item-text" primary="Изменить смену" />
+              <ListItemText
+                className="production-page__item-text"
+                primary="Изменить смену"
+              />
             </ListItem>
 
             <ListItem button onClick={onChangePlanClick} divider={true}>
-              <ListItemText className="production-page__item-text" primary="Изменить план" />
+              <ListItemText
+                className="production-page__item-text"
+                primary="Изменить план"
+              />
             </ListItem>
 
             <ListItem button onClick={onChangeDaysClick} divider={true}>
-              <ListItemText className="production-page__item-text" primary="Изменить количество смен" />
+              <ListItemText
+                className="production-page__item-text"
+                primary="Изменить количество смен"
+              />
             </ListItem>
 
             <ListItem button onClick={onChangePprClick}>
-              <ListItemText className="production-page__item-text" primary="Изменить часы ППР" />
+              <ListItemText
+                className="production-page__item-text"
+                primary="Изменить часы ППР"
+              />
             </ListItem>
           </List>
         </SwipeableDrawer>
 
         <Dialog open={newMonthMenuOpened} onClose={closeNewMonthMenu}>
-          <NewMonthForm confirmed={onNewMonthConfirmed} canceled={onNewMonthCanceled} product={product} />
+          <NewMonthForm
+            confirmed={onNewMonthConfirmed}
+            canceled={onNewMonthCanceled}
+            product={product}
+          />
         </Dialog>
 
         <Dialog open={newWorkDayMenuOpened} onClose={closeNewWorkDayMenu}>
-          <NewWorkDayForm confirmed={onNewWorkDayConfirmed} canceled={onNewWorkDayCanceled}  />
+          <NewWorkDayForm
+            confirmed={onNewWorkDayConfirmed}
+            canceled={onNewWorkDayCanceled}
+          />
         </Dialog>
 
         <Dialog open={changePlanMenuOpened} onClose={closeChangePlanForm}>
-          <SimpleForm 
-          confirmed={onChangePlanConfirmed} 
-          canceled={onChangePlanCanceled}
-          title={"План"}
-          cancelBtnText={"Отмена"}
-          confirmBtnText={"Изменить"}
-          label={"Количество"}
-          defaultVal={month.plan}/>
+          <SimpleForm
+            confirmed={onChangePlanConfirmed}
+            canceled={onChangePlanCanceled}
+            title={"План"}
+            cancelBtnText={"Отмена"}
+            confirmBtnText={"Изменить"}
+            label={"Количество"}
+            defaultVal={month.plan}
+          />
         </Dialog>
 
         <Dialog open={changePprMenuOpened} onClose={closeChangePprForm}>
-          <SimpleForm 
-          confirmed={onChangePprConfirmed} 
-          canceled={onChangePprCanceled}
-          title={"Часы ППР"}
-          cancelBtnText={"Отмена"}
-          confirmBtnText={"Изменить"}
-          label={"Часы"}
-          defaultVal={month.ppr}/>
+          <SimpleForm
+            confirmed={onChangePprConfirmed}
+            canceled={onChangePprCanceled}
+            title={"Часы ППР"}
+            cancelBtnText={"Отмена"}
+            confirmBtnText={"Изменить"}
+            label={"Часы"}
+            defaultVal={month.ppr}
+          />
         </Dialog>
 
         <Dialog open={changeWorkDayMenuOpened} onClose={closeChangeWorkDayMenu}>
-          <ChangeWorkDayForm 
-            confirmed={onChangeWorkDayConfirmed} 
-            canceled={onChangeWorkDayCanceled} 
-            workDays={month.workDays} />
+          <ChangeWorkDayForm
+            confirmed={onChangeWorkDayConfirmed}
+            canceled={onChangeWorkDayCanceled}
+            workDays={month.workDays}
+          />
         </Dialog>
 
         <Dialog open={changeDaysMenuOpened} onClose={closeChangeDaysMenuOpened}>
-          <SimpleForm 
-          confirmed={onChangeDaysConfirmed} 
-          canceled={onChangeDaysCanceled}
-          title={"Смены"}
-          cancelBtnText={"Отмена"}
-          confirmBtnText={"Изменить"}
-          label={"Количество смен"}
-          defaultVal={month.days}/>
+          <SimpleForm
+            confirmed={onChangeDaysConfirmed}
+            canceled={onChangeDaysCanceled}
+            title={"Смены"}
+            cancelBtnText={"Отмена"}
+            confirmBtnText={"Изменить"}
+            label={"Количество смен"}
+            defaultVal={month.days}
+          />
         </Dialog>
       </section>
-
     </ErrorBoundary>
   );
-}
+};

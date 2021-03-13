@@ -1,29 +1,29 @@
 .production-table__table-container {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .production-table__main-table {
-	flex-shrink: 1;
+  flex-shrink: 1;
 }
 
 .production-table__cell {
-	width: 50%;
+  width: 50%;
 }
 
 .production-table__head-cell {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .production-table__footer {
-	height: 55px;
-	flex-shrink: 0;
+  height: 55px;
+  flex-shrink: 0;
 
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .production-table__footer-cell {
-	line-height: 1;
+  line-height: 1;
 }

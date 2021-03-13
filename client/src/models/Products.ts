@@ -1,4 +1,4 @@
 export enum Products {
-	napkins = 'napkins',
-	toilets = 'toilets'
+  Napkins = "napkins",
+  Toilets = "toilets",
 }
