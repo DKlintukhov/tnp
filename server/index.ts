@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 app.use('/api', workMonthRouter);
 
-app.use(express.static('../client/build'));
-app.get('/', (req: Request, res: Response) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
+app.use(express.static('../../client/build'));
+app.get('/', (req: Request, res: Response) => res.sendFile(path.join(__dirname, '../../client/build/index.html')));
 
 app.listen(port, () => console.log(`The server is listening on port: ${port}`));
