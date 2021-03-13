@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 
+const router = express.Router();
 const controller = require('../controllers/Month.controller');
 
 router.get('/month/:product', controller.getMonth);

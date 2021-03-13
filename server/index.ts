@@ -1,27 +1,25 @@
+import { Response, Request } from 'express';
 const express = require('express');
-const app = express();
 const compression = require('compression');
-const port = process.env.PORT || 4444;
-const data = require('./models/data');
 const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
-
-// routes
 const workMonthRouter = require('./routes/Month.route');
+
+const app = express();
+const port = process.env.PORT || 4444;
 
 app.use(morgan('dev'));
 app.use(compression());
 app.use(helmet());
 app.use(cors());
-// parse application/json
 app.use(bodyParser.json());
 
 app.use('/api', workMonthRouter);
 
-app.use(express.static('../client/build'))
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
+app.use(express.static('../client/build'));
+app.get('/', (req: Request, res: Response) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
 
-app.listen(port, () => console.log(`Server is listening on port: ${port}`));
+app.listen(port, () => console.log(`The server is listening on port: ${port}`));
