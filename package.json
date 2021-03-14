@@ -2,7 +2,7 @@
   "name": "tnp_plan",
   "version": "1.0.0",
   "description": "tnp production",
-  "main": "/server/build/index.js",
+  "main": "index.js",
   "private": true,
   "engines": {
     "node": "14.16.0",

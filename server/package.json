@@ -2,7 +2,7 @@
   "name": "tnp_plan_server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./build/index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
