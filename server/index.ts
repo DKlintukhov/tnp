@@ -20,9 +20,6 @@ app.use(bodyParser.json());
 app.use('/api', workMonthRouter);
 
 app.use(express.static('../client/build'));
-//app.get('/', (req: Request, res: Response) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
-app.use("*",(req: Request, res: Response) =>{
-    res.send("<h1>Welcome to your simple server! Awesome right</h1>");
-});
+app.get('/', (_: Request, res: Response) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
 
 app.listen(port, () => console.log(`The server is listening on port: ${port}`));
