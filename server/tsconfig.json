@@ -6,5 +6,8 @@
     "strict": true,
     "outDir": "./build/"
   },
+  "include" : [
+    "/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

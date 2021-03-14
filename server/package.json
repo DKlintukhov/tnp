@@ -22,8 +22,8 @@
     "ts-node": "^9.1.1"
   },
   "scripts": {
-    "start": "npx tsc && node ./build/index.js",
-    "start-dev": "npx tsc && npx nodemon index.ts",
+    "start": "ts-node ./build/index.js",
+    "start-dev": "nodemon -x ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Denis Klintukhov",
